@@ -2,7 +2,7 @@ angular.module 'oekoKostenrechner'
   .constant 'MAIN',
     SHORTENER_INTERFACE: '//white-shortener.herokuapp.com'
     SHORTENER_PROVIDER: 'goo.gl',
-    CHART_TYPE: 'spline'
+    CHART_TYPE: 'bar'
     CHART_YAXIS: 'TCO'
     CHART_XAXIS: 'mileage'
     FLOOR_YEAR: 2014
