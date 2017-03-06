@@ -16,7 +16,7 @@ angular.module 'oekoKostenrechner'
       # Some settings can be seen on preleminary form
       getPreliminarySettings: => @getSettingsBy preliminary: yes
       # Some settings can be seen on list
-      getListedSettings: => @getSettingsBy shownonthelist: yes
+      getListedSettings: => @getSettingsBy shownonthelist: yes, privatvisible: yes
       # Some settings can be used as x axis
       getXAxisSettings: => @getSettingsBy canbeonxaxis: yes
       # Find the display for the given query

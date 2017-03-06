@@ -10,39 +10,39 @@ form.main__vehicle(ng-submit="modal.saveVehicle()", name="vehicleForm", novalida
   .main__vehicle__group(ng-repeat="group in modal.groups | orderBy:'importancerank' | filter:modal.isGroupVisible")
     .modal-body
       h4.main__vehicle__group__title
-        | {{ group.name | translate }} 
+        | {{ group.name | translate }}
     table.table.table-striped.main__vehicle__group__table
       tbody
         tr(ng-repeat="setting in group.settings | orderBy:'importancerank' | filter:modal.isSettingVisible", ng-class="{ warning: setting.context === 'presets' }")
           td(style="width: 60%")
             | {{ setting.label | translate }}
-            span.small.main__vehicle__group__table__info(uib-tooltip-html="setting.description | translate", ng-show="setting.description")
+            span.small.main__vehicle__group__table__info(uib-tooltip-html="setting.privatdesc | translate", ng-show="setting.privatdesc")
               i.fa.fa-info
           td(style="width: 40%")
             div(ng-repeat="context in modal.contexts")
               div(ng-switch, on=":: modal.inputs[setting.id].getType()", ng-if="setting.context === context")
                 div(ng-switch-when="boolean")
-                  input(type="checkbox", 
-                    ng-model="modal.gs(context, setting.name, setting.id)", 
+                  input(type="checkbox",
+                    ng-model="modal.gs(context, setting.name, setting.id)",
                     ng-model-options="{ getterSetter: true }")
                 div(ng-switch-when="enum", ng-class="{ 'input-group': setting.unit }")
                   select.form-control(
                     ng-options="val as (val | translate) for val in modal.values[setting.id].range",
-                    ng-model="modal.gs(context, setting.name, setting.id)", 
+                    ng-model="modal.gs(context, setting.name, setting.id)",
                     ng-model-options="{ getterSetter: true }")
-                  span.input-group-addon(ng-show="setting.unit") 
+                  span.input-group-addon(ng-show="setting.unit")
                     | {{ setting.unit | translate }}
                 div(ng-switch-when="interval", ng-class="{ 'input-group': setting.unit }")
                   input.form-control(type="number",
                     min="{{ modal.values[setting.id].floor }}",
                     max="{{ modal.values[setting.id].ceil }}",
                     step="{{ modal.values[setting.id].step != 1 ? modal.values[setting.id].step : 'any' }}",
-                    ng-model="modal.gs(context, setting.name, setting.id)", 
+                    ng-model="modal.gs(context, setting.name, setting.id)",
                     ng-model-options="{ getterSetter: true, updateOn: 'blur' }")
-                  span.input-group-addon(ng-show="setting.unit") 
+                  span.input-group-addon(ng-show="setting.unit")
                     | {{ setting.unit | translate }}
                 div(ng-switch-default)
-                  strong {{ modal[context][setting.name] | number:2 }}                  
+                  strong {{ modal[context][setting.name] | number:2 }}
                   span &nbsp;{{ setting.unit | translate }}
   .modal-footer
     button.btn.btn-default.btn-lg.pull-left(type="button", ng-click="modal.close()")

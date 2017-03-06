@@ -4,14 +4,14 @@
       h2.main__form__step__heading {{ step.label | translate }}
       .main__form__step__position
         | {{ 'step_position' | translate:{ current: form.getActiveStepIdx() + 1, total: form.getStepsCount() } }}
-        
+
       div(ng-switch, on=":: form.getStepType(step)")
         div(ng-switch-when="enum")
           p.main__form__step__body.main__form__step__body--select
             label.main__form__step__body__radio.radio(ng-repeat="value in form.getStepValues(step).range track by $index",
               ng-class="{ 'active': form.newVehicle[step.name] === value }")
               input(type="radio", required, name="{{ step.name }}", ng-value="value", ng-model="form.newVehicle[step.name]")
-              {{ value | translate }}                          
+              {{ value | translate }}
               span.text-muted.small.main__form__step__body__radio__help(
                 uib-tooltip="{{ value + '-tooltip' | translate }}", ng-show="form.inputs[step.id].setting.hashelp")
                 i.fa.fa-info
@@ -21,18 +21,18 @@
               label.main__form__step__body__radio.radio(ng-repeat="value in form.getStepValues(step).range track by $index",
                 ng-class="{ 'active': form.newVehicle[step.name] === value }")
                 input(type="radio", required, name="{{ step.name }}" ng-value="value" ng-model="form.newVehicle[step.name]")
-                {{ value | translate }}                        
+                {{ value | translate }}
                 span.text-muted.small.main__form__step__body__radio__help(
                   uib-tooltip="{{ value + '-tooltip' | translate }}", ng-show="form.inputs[step.id].setting.hashelp")
                   i.fa.fa-info
-          div(ng-if=":: form.inputs[step.id].setting.hasslider")  
+          div(ng-if=":: form.inputs[step.id].setting.hasslider")
             div(ng-init="form.newVehicle[step.name] = form.getStepValues(step).value")
               p.main__form__step__body.main__form__step__body--slider
                 rzslider(rz-slider-model="form.newVehicle[step.name]",
                          rz-slider-options="form.getStepValues(step)")
-          
-      
-      p.main__form__step__description(ng-bind-html="step.description | translate")
+
+
+      p.main__form__step__description(ng-bind-html="step.privatdesc | translate")
       p.main__form__step__nav
         a.btn.btn-link.btn-lg(ng-click="form.previousStep()") {{ 'go_back' | translate }}
         button.btn.btn-primary.btn-lg(type="submit", ng-disabled="stepForm.$invalid") {{ 'next_step' | translate }}
