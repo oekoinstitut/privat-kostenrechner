@@ -1,28 +1,28 @@
 
 // Financial variables
 var inflationsrate   = 0.015		// That's 1.5% per year
-var exchange_rate    = 1.25 		// How many $ for 1 €
-var discount_rate    = 0.05			// 5% per year
-var abschreibungszeitraum = 6  	    // amortization period
-var unternehmenssteuersatz = 30 	// corporate tax
-var sonder_afa = false				// special accounting rule to increase amortization for electro vehicles in the first year deactivated by default
+var discount_rate    = 0.04			// 5% per year
+var unternehmenssteuersatz = 0 	// corporate tax
 var praemie = true 			    // Cash bonus activated by default
 var praemie_bev = 4000
-var praemie_hybrid = 3000           
+var praemie_hybrid = 3000       
 
 // Energy prices in € per Liter and cents per kWh
 var energy_known_prices = {
 	"diesel": {
 		"2014": 1.1349,
-		"2015": 0.9841
+		"2015": 0.9841,
+		"2017": 1.0084
 	},
 	"benzin": {
 		"2014": 1.2843,
-		"2015": 1.1711
+		"2015": 1.1711,
+		"2017": 1.1765
 	},
 	"BEV": {
 		"2014": .2449,
-		"2015": .2410
+		"2015": .2410,
+		"2017": .2101
 	}
 }
 
@@ -183,9 +183,11 @@ var kfzsteuer = {
 
 // Yearly check up in €
 var untersuchung = {
-	"benzin": {"HU": 53.5, "AU": 41},
-	"diesel": {"HU": 53.5, "AU": 41},
-	"BEV":    {"HU": 53.5, "AU": 0}
+	"benzin": 47.45,
+	"diesel": 47.45,
+	"BEV":   28.25,
+	"hybrid-benzin": 47.45,
+	"hybrid-diesel": 47.45
 				}
 
 // Variables for repairs
@@ -272,35 +274,10 @@ var restwert_constants = {
 	"b3": 0.91569
 }
 
-/* Disused variables */
-
-//Training costs for electrical cars in 2014
-var schulungskosten = {
-	"keine Schulung": 0,
-	"Schulung intern": 30,
-	"Schulung externer Dienstleister": 1000
-}
-
-// Variables for oil prices
-var oil_price_2014   = {"diesel": 1.217/1.19, "benzin":1.546/1.19} 		// € per L
-var mineralölsteuer  = {"diesel": 0.4704, "benzin":0.6545} 		// € per L
-var deckungsbeitrag  = {"diesel": 0.1563, "benzin":0.1227}		// € per L
-var mehrwertsteuer   = 0										// No VAT for professionals
-var price_per_barrel = {"2020": 117, "2030": 124, "2050": 128}	// In $-2011
-
-//Variables for electricity prices in cents per kWh in 2011 €
-var electricity_prices = {
-	"2014": { "private": .2913/1.19, "industrie": .1349 },		// In 2014 - €
-	"2020": { "private": .292/1.19, "industrie": .159 },		// In 2011 - €
-	"2030": { "private": .284/1.19, "industrie": .157 },		// In 2011 - €
-	"2050": { "private": .268/1.19, "industrie": .147/1.19 }	// In 2011 - €
-}
+// VAT
+var mehrwertsteuer   = 1.19	
 
 exports.inflationsrate = inflationsrate
-exports.exchange_rate = exchange_rate
-exports.abschreibungszeitraum = abschreibungszeitraum
-exports.unternehmenssteuersatz = unternehmenssteuersatz
-exports.sonder_afa = sonder_afa
 exports.nettolistenpreise = nettolistenpreise
 exports.kostensteigerung20102030 = kostensteigerung20102030
 exports.aufpreis = aufpreis
@@ -308,12 +285,7 @@ exports.entladetiefe = entladetiefe
 exports.reichweite = reichweite
 exports.batteriepreise = batteriepreise
 exports.lademöglichkeiten = lademöglichkeiten
-exports.oil_price_2014 = oil_price_2014
-exports.mineralölsteuer = mineralölsteuer
-exports.deckungsbeitrag = deckungsbeitrag
 exports.mehrwertsteuer = mehrwertsteuer
-exports.price_per_barrel = price_per_barrel
-exports.electricity_prices = electricity_prices
 exports.verbrauchsentwicklung = verbrauchsentwicklung
 exports.price_of_lubricant = price_of_lubricant
 exports.hubraum = hubraum
@@ -326,7 +298,6 @@ exports.faktor_HEV = faktor_HEV
 exports.reperaturkosten = reperaturkosten
 exports.co2_emissions = co2_emissions
 exports.traffic_multiplicator = traffic_multiplicator
-exports.schulungskosten = schulungskosten
 exports.hybrid_minderverbrauch = hybrid_minderverbrauch
 exports.hybrid_minderverbrauch_schmierstoff = hybrid_minderverbrauch_schmierstoff
 exports.einsatztage_pro_jahr = einsatztage_pro_jahr
