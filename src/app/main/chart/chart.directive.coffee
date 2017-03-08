@@ -232,7 +232,7 @@ angular.module 'oekoKostenrechner'
           else
             []
         generateTooltip: =>
-          show: do @hasTooltip
+          show: true
           format:
             # Translate labels
             name: (v)-> $translate.instant v
