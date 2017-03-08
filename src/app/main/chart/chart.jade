@@ -7,7 +7,7 @@
       a(ui-sref="main.chart.tco({ type: 'spline' })")
         | {{ "tco_trend_btn" | translate }}
     li(ui-sref-active="active")
-      a(ui-sref="main.chart.co2" ng-bind-html="'co2_btn' | translate")
+      a(ui-sref="main.chart.co2({ type: 'spline' })" ng-bind-html="'co2_btn' | translate")
     li(ui-sref-active="active")
       a(ui-sref="main.chart.table" ng-bind-html="'table_btn' | translate")
 

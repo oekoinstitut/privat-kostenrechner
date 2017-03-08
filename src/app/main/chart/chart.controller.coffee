@@ -5,7 +5,7 @@ angular.module 'oekoKostenrechner'
       constructor: ->
         $scope.$on '$stateChangeSuccess', =>
           # Change chart type according to the current param
-          @type = if $state.params.type? then $state.params.type else MAIN.CHART_TYPE
+          @type = $state.params.type or MAIN.CHART_TYPE
           @yAxis = if $state.is('main.chart.co2') then 'CO2' else MAIN.CHART_YAXIS
         # Shortcut to the vehicles created by the user
         @vehicles = $scope.$parent.main.vehicles
@@ -16,7 +16,7 @@ angular.module 'oekoKostenrechner'
         @yAxis     = MAIN.CHART_YAXIS
         @type      = MAIN.CHART_TYPE
         # Always redirect to child state
-        $state.go 'main.chart.tco', type: MAIN.CHART_TYPE
+        $state.go 'main.chart.tco', type: 'bar'
         # Generate a short permalink every time the vehicle array is upddated
         $scope.$watch 'chart.vehicles', @generateShortPermalink, yes
       print: -> do $window.print

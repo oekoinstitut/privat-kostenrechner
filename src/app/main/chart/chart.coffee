@@ -8,4 +8,6 @@ angular.module 'oekoKostenrechner'
       .state 'main.chart.tco',
         params:
           type: value: 'bar'
-      .state 'main.chart.co2', {}
+      .state 'main.chart.co2',
+        params:
+          type: value: 'spline'
