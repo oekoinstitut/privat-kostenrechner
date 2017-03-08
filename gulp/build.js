@@ -181,7 +181,7 @@ gulp.task('clean', function () {
 
 gulp.task('deploy', ['build'], function() {
   return gulp.src("./dist/**/*").pipe($.ghPages({
-    remoteUrl: "git@github.com:jplusplus/privat-kostenrechner.git"
+    remoteUrl: "git@github.com:oekoinstitut/privat-kostenrechner.git"
   }));
 });
 
