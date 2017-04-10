@@ -90,7 +90,7 @@ function getChargingOptionPrice(option, year) {
 }
 
 function getChargingOptionMaintenancePrice(option) {
-	return presets.lademöglichkeiten[option]["maintenance"];
+	return presets.lademöglichkeiten[option]["maintenance"] * presets.mehrwertsteuer;
 }
 
 // Returns the price of the battery in E/kwh
@@ -517,7 +517,6 @@ var Vehicle = function(params) {
 					if (this.fixed_vars.hasOwnProperty("cash_bonus_amount")) {
 						this.cash_bonus_amount = this.fixed_vars["cash_bonus_amount"]
 					}
-					
 					this.price.total[scenario] -= this.cash_bonus_amount
 				} else {
 					this.cash_bonus_amount = 0
@@ -787,7 +786,8 @@ var Vehicle = function(params) {
 		costs["charging_infrastructure"] = Math.round(this.charging_option_cost)
 		costs["total_cost"] = Math.round(this.price.total[scenario])
 
-		costs["cash_bonus"] = Math.round(this.cash_bonus_amount)
+		// Display must be negative
+		costs["cash_bonus"] = - Math.round(this.cash_bonus_amount)
 
 		costs["residual_value"] = - this.residual_value[scenario]
 		costs["residual_value"] = getInflatedPrice(costs["residual_value"], this.holding_time - 1, this.inflationsrate/100, false)
@@ -1018,9 +1018,9 @@ var Vehicle = function(params) {
 		this.maintenance_costs_tires = Math.round(this.maintenance_costs_tires * 100)/100
 		this.maintenance_costs_charger = Math.round(this.maintenance_costs_charger)
 		this.lubricant_costs = Math.round(this.lubricant_costs * 100)/100
-		this._2016_elec_price = Math.round(this._2016_elec_price * 100)/100
-		this._2016_diesel_price = Math.round(this._2016_diesel_price * 100)/100
-		this._2016_benzin_price = Math.round(this._2016_benzin_price * 100)/100
+		this._2017_elec_price = Math.round(this._2017_elec_price * 100)/100
+		this._2017_diesel_price = Math.round(this._2017_diesel_price * 100)/100
+		this._2017_benzin_price = Math.round(this._2017_benzin_price * 100)/100
 		this.residual_value_fixed = Math.round(this.residual_value_fixed)
 		this.fuel_consumption = Math.round(this.fuel_consumption * 100)/100
 		this.acquisition_price = Math.round(this.acquisition_price)
