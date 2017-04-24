@@ -477,8 +477,8 @@ var Vehicle = function(params) {
 		for (var i in scenarios) {
 			var scenario = scenarios[i]
 			if (this.energy_type == "benzin" || this.energy_type == "diesel") {
-				this.price.basis_price = getRawAcquisitionPrice(this.energy_type, this.car_type, this.acquisition_year)
-				this.acquisition_price = this.price.basis_price * presets.mehrwertsteuer
+				this.price.basis_price = getRawAcquisitionPrice(this.energy_type, this.car_type, this.acquisition_year) * presets.mehrwertsteuer 
+				this.acquisition_price = this.price.basis_price
 				this.charging_option_cost = 0
 				if (this.fixed_vars.hasOwnProperty("acquisition_price")) {
 					this.acquisition_price = this.fixed_vars["acquisition_price"]
