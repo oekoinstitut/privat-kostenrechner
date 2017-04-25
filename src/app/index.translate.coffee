@@ -12,7 +12,7 @@ angular.module 'oekoKostenrechner'
         'en-US': 'en',
         'en-UK': 'en'
       .determinePreferredLanguage ->
-        lang = navigator.language or navigator.userLanguage
+        lang = 'de'
         avalaibleKeys = [
           'de_DE', 'de-DE', 'de',
           'en_US', 'en_UK', 'en-UK', 'en-US', 'en'
