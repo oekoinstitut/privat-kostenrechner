@@ -163,9 +163,9 @@ var Vehicle = function(params) {
 			this.fixed_vars[prop] = params[prop]
 		}
 	}
-
-	if (this.car_type.indexOf("LNF") >= 0 && this.energy_type == "BEV"){
-		this.reichweite = 130
+	
+	if (!params.hasOwnProperty("reichweite")) {
+		this.reichweite = presets.reichweite[this.car_type]
 	}
 
 	this.share_electric_temp = this.share_electric
