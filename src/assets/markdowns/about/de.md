@@ -12,7 +12,7 @@ Die Methodik und Berechnungsgrundlage des Online-Kostenrechners wurde durch das 
 
 Die Konzeption und Entwicklung des Online-Rechners erfolgte durch [Journalism++](http://www.jplusplus.org/de/).
 
-### Erforderliche Mindestkonfiguration
+### Erforderliche Mindestkonfiguratio
 
 Der Online-Rechner wird von der jeweils aktuellen und der Vorgängerversion der Browser Chrome, Mozilla Firefox und Internet Explorer unterstützt. Diese sind auf alle Betriebssysteme mit aktivem Support verfügbar (d.h. Windows 8+, MacOS 10.9+, Ubuntu 12.04+). Der Rechner funktioniert auf moderne mobile Geräte (z.B. iPad 3).
 
