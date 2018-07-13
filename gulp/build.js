@@ -1,7 +1,7 @@
 'use strict';
 
 let GSSID = '1F-fq45KZmkxb27UJpmBDlhyHTjaYeNpHs3lw759OszA';
-let BOOL_FIELDS = ['hasslider', 'hashelp', 'canbeonxaxis', 'shownonthelist', 'preliminary', 'editable', 'relative'];
+let BOOL_FIELDS = ['hasslider', 'hashelp', 'canbeonxaxis', 'shownonthelist', 'preliminary', 'editable', 'relative', 'privatvisible'];
 let NUMBER_FIELDS = ['importancerank', 'interval']
 let UNWANTED_FIELDS = ['_xml', '_links'];
 
